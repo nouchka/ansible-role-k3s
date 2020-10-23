@@ -7,6 +7,7 @@
 
 - name: start | wait for master node to be ready
   command: "/usr/local/bin/k3s kubectl get nodes"
+  check_mode: no
   changed_when: false
   register: kubectl_get_nodes_result
   until: kubectl_get_nodes_result.stdout.find("NotReady") == -1
